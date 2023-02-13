@@ -1,70 +1,41 @@
 import 'package:flutter/material.dart';
+import "package:flutter/rendering.dart";
+import 'package:hello_flutter/etc_page.dart';
+import 'package:hello_flutter/home_page.dart';
+import 'package:hello_flutter/profile_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  debugPaintSizeEnabled = false;
+  runApp(const App());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '나의 앱',
-      theme: ThemeData(
-        primarySwatch: Colors.brown,
-      ),
-      home: const MyHomePage(title: '안녕하세요 나의 첫 Flutter!!!'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Float 버튼을 클릭하세요:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const Text(
-              '반갑습니다',
-              style: TextStyle(color: Color.fromARGB(255, 33, 243, 51)),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        theme: ThemeData.light(useMaterial3: true),
+        home: DefaultTabController(
+          length: 3,
+          child: Scaffold(
+              appBar: AppBar(
+                title: const Text("나의 자랑"),
+                bottom: const TabBar(
+                  tabs: [
+                    Tab(text: "Home"),
+                    Tab(text: "프로필"),
+                    Tab(text: "기타"),
+                  ],
+                ),
+              ),
+              body: const TabBarView(
+                children: [
+                  HomePage(),
+                  ProfilePage(),
+                  EtcPage(),
+                ],
+              )),
+        ));
   }
 }
