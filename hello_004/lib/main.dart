@@ -59,7 +59,7 @@ class App extends StatelessWidget {
                       isInverted: false,
                     ),
                     Transform.translate(
-                      offset: const Offset(0, -20),
+                      offset: const Offset(0, -30),
                       child: const WalletCard(
                         currencyName: "BITCoin",
                         icon: Icons.currency_bitcoin_rounded,
@@ -68,7 +68,7 @@ class App extends StatelessWidget {
                       ),
                     ),
                     Transform.translate(
-                      offset: const Offset(0, -40),
+                      offset: const Offset(0, -60),
                       child: const WalletCard(
                         currencyName: "Dollar",
                         icon: Icons.attach_money_outlined,

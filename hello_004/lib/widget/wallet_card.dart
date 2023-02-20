@@ -18,6 +18,7 @@ class WalletCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         color: isInverted ? Colors.white : _blackColor,
         borderRadius: BorderRadius.circular(25),
@@ -35,9 +36,6 @@ class WalletCard extends StatelessWidget {
                         color: isInverted ? _blackColor : Colors.white,
                         fontSize: 32,
                         fontWeight: FontWeight.w600)),
-                const SizedBox(
-                  height: 20,
-                ),
                 Text(amount,
                     style: TextStyle(
                         color: isInverted ? _blackColor : Colors.white,
