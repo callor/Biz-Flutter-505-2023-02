@@ -5,7 +5,12 @@ class CTextFormField extends StatelessWidget {
     super.key,
     required TextEditingController inputController,
     required this.labelText,
+    required this.thisFocus,
+    required this.nextFocus,
   }) : _inputController = inputController;
+
+  final FocusNode thisFocus;
+  final FocusNode nextFocus;
 
   final TextEditingController _inputController;
   final String labelText;
@@ -26,11 +31,15 @@ class CTextFormField extends StatelessWidget {
           }
         },
         autovalidateMode: AutovalidateMode.always,
-        textInputAction: TextInputAction.go,
+        textInputAction: TextInputAction.next,
+        focusNode: thisFocus,
+        autofocus: true,
         onFieldSubmitted: (value) async {
           _inputController.text = value;
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text(value)));
+          FocusScope.of(context).requestFocus(nextFocus);
+
+          // ScaffoldMessenger.of(context)
+          //     .showSnackBar(SnackBar(content: Text(value)));
         },
       ),
     );

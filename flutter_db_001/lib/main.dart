@@ -75,8 +75,17 @@ class _MainPageState extends State<MainPage> {
                   builder: (context) => const DogInput(),
                 ),
               );
-              await DogDBService().insert(result);
-              setState(() {});
+
+              // if (result != null) {
+              //   await DogDBService().insert(result);
+              //   setState(() {});
+              // }
+              try {
+                await DogDBService().insert(result);
+                setState(() {});
+              } catch (e) {
+                print("오류발생");
+              }
             },
             child: const Icon(Icons.add),
           )

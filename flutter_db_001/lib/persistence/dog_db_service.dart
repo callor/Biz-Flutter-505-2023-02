@@ -16,6 +16,15 @@ class DogDBService {
     const Dog(name: "귀여미", age: 10),
   ];
 
+  final String createTableSql = '''
+        CREATE TABLE dogs (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          name TEXT,
+          age INTEGER,
+          etc TEXT
+        )
+      ''';
+
   /*
    * Future 클래스
    * 현재는 데이터가 없지만,
@@ -26,15 +35,15 @@ class DogDBService {
     return _database;
   }
 
-  onCreateTable(db, version) {
-    return db.execute('''
-        CREATE TABLE dogs (
-          id INTEGER PRIMARY KEY AUTOINCREMENT,
-          name TEXT,
-          age INTEGER,
-          etc TEXT
-        )
-      ''');
+  Future<void> _onCreateTable(db, version) {
+    return db.execute(createTableSql);
+  }
+
+  Future<void> _onUpgradeTable(db, oldVersion, newVersion) async {
+    final batch = db.batch();
+    batch.execute("DROP TABLE dogs");
+    batch.execute(createTableSql);
+    await batch.commit();
   }
 
   /*
@@ -48,9 +57,9 @@ class DogDBService {
     String dbFile = join(dbPath, "dog_database.db");
     return await openDatabase(
       dbFile,
-      onCreate: onCreateTable,
-      onUpgrade: (db, oldVersion, newVersion) => db.execute("DELETE FROM dogs"),
-      version: 3,
+      onCreate: _onCreateTable,
+      onUpgrade: _onUpgradeTable,
+      version: 7,
     );
   }
 

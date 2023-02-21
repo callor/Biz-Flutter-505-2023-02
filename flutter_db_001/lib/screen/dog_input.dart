@@ -29,6 +29,9 @@ class _DogInputState extends State<DogInputForm> {
   final _nameInputController = TextEditingController();
   final _ageInputController = TextEditingController();
 
+  final _nameInputFocus = FocusNode();
+  final _ageInputFocus = FocusNode();
+
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -43,10 +46,14 @@ class _DogInputState extends State<DogInputForm> {
             CTextFormField(
               inputController: _nameInputController,
               labelText: "이름",
+              thisFocus: _nameInputFocus,
+              nextFocus: _ageInputFocus,
             ),
             CTextFormField(
               inputController: _ageInputController,
               labelText: "나이",
+              thisFocus: _ageInputFocus,
+              nextFocus: _nameInputFocus,
             ),
             Padding(
               padding: const EdgeInsets.all(10),
@@ -80,5 +87,7 @@ class _DogInputState extends State<DogInputForm> {
     super.dispose();
     _nameInputController.dispose();
     _ageInputController.dispose();
+    _nameInputFocus.dispose();
+    _ageInputFocus.dispose();
   }
 }
