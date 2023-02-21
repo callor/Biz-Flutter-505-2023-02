@@ -8,6 +8,14 @@ class DogDBService {
   // 변수를 즉시 초기화 하지 않고, 잠시 후에 초기화 하겠다
   late Database _database;
 
+  final List<Dog> dogs = [
+    const Dog(name: "몽이", age: 12),
+    const Dog(name: "럭키", age: 3),
+    const Dog(name: "니키", age: 5),
+    const Dog(name: "꿈이", age: 1),
+    const Dog(name: "귀여미", age: 10),
+  ];
+
   /*
    * Future 클래스
    * 현재는 데이터가 없지만,
@@ -66,5 +74,14 @@ class DogDBService {
         age: dogMaps[index]['age'],
       );
     });
+  }
+
+  Future<int> delete(int id) async {
+    final db = await database;
+
+    return db.rawDelete("DELETE FROM dogs WHERE id= ?", [id]);
+
+    // 아래와 같은 코드 절대 사용금지, DB Injection 공격 노출
+    // db.rawDelete("DELETE FROM dogs WHERE id= ${id}");
   }
 }
