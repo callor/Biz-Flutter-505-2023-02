@@ -31,7 +31,8 @@ class DogDBService {
         CREATE TABLE dogs (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           name TEXT,
-          age INTEGER
+          age INTEGER,
+          etc TEXT
         )
       ''');
   }
@@ -48,8 +49,8 @@ class DogDBService {
     return await openDatabase(
       dbFile,
       onCreate: onCreateTable,
-      onUpgrade: (db, oldVersion, newVersion) => "DELETE FROM dogs",
-      version: 1,
+      onUpgrade: (db, oldVersion, newVersion) => db.execute("DELETE FROM dogs"),
+      version: 3,
     );
   }
 

@@ -1,11 +1,13 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_db_001/persistence/dog_db_service.dart';
+import 'package:flutter_db_001/screen/dog_input.dart';
+import 'package:flutter_db_001/screen/dog_list_view.dart';
 
 import 'models/dog_dto.dart';
 
 void main() {
+  // DB 연동을 할때는 반드시 추가해주기
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const App());
 }
 
@@ -46,33 +48,10 @@ class _MainPageState extends State<MainPage> {
         future: DogDBService().selectAll(),
         builder: (BuildContext context, AsyncSnapshot<List<Dog>> snapshot) {
           if (snapshot.hasData) {
-            return ListView.builder(
-                itemCount: snapshot.data?.length,
-                itemBuilder: (BuildContext context, int index) {
-                  Dog dog = snapshot.data![index];
-                  return Dismissible(
-                    key: UniqueKey(),
-                    onDismissed: (direction) {
-                      DogDBService().delete(dog.id);
-                    },
-                    child: Center(
-                      child: Row(
-                        // mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(dog.name,
-                              style: const TextStyle(
-                                fontSize: 20,
-                                color: Colors.blue,
-                              )),
-                          Text(
-                            "${dog.age}",
-                            style: const TextStyle(fontSize: 16),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                });
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15),
+              child: DogListView(snapshot: snapshot),
+            );
           } else {
             return const Center(
               child: CircularProgressIndicator(),
@@ -86,9 +65,17 @@ class _MainPageState extends State<MainPage> {
           FloatingActionButton(
             onPressed: () async {
               // Dog dog = const Dog(name: "귀여미", age: 5);
-              Dog dog = DogDBService()
-                  .dogs[Random().nextInt(DogDBService().dogs.length)];
-              await DogDBService().insert(dog);
+              // Dog dog = DogDBService()
+              //     .dogs[Random().nextInt(DogDBService().dogs.length)];
+              // await DogDBService().insert(dog);
+              // setState(() {});
+              final result = await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DogInput(),
+                ),
+              );
+              await DogDBService().insert(result);
               setState(() {});
             },
             child: const Icon(Icons.add),
