@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:todo_list/dao/todo_dao.dart';
 import 'package:todo_list/screen/todo_list_view.dart';
 
@@ -80,6 +81,7 @@ class _TodoHomePageState extends State<TodoHomePage> {
 
   Future<dynamic> todoInputBox(BuildContext context) {
     return showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (_) {
           return AlertDialog(
@@ -125,9 +127,15 @@ class _TodoHomePageState extends State<TodoHomePage> {
           );
         }).then((result) {
       if (result == "INSERT") {
+        // DateTime.now() : 시스템(단말장치)의 현재 날짜와 시간 가져오기
+        // DateFormat(형식).format( 날짜데이터 )
+        //      : 날짜데이터를 형식 문자열로 변환
+        String sdate = DateFormat("yyyy-MM-dd").format(DateTime.now());
+        String stime = DateFormat("HH:mm:ss").format(DateTime.now());
+
         TodoDto todo = TodoDto(
-          sdate: "2023-03-02",
-          stime: "15:50:00",
+          sdate: sdate, // "2023-03-02",
+          stime: stime, // "15:50:00",
           content: content,
         );
         TodoDao().insert(todo);
