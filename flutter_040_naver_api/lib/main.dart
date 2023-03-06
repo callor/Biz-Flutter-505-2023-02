@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
         future: resultMovie,
         builder: (context, snapshot) {
           return ListView.builder(
-            itemCount: snapshot.data?.length,
+            itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {
               return Text(snapshot.data![index].title);
             },
