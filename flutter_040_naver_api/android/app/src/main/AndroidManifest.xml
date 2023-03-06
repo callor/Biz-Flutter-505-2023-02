@@ -1,7 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flutter_040_naver_api">
+    package="com.callor.naver">
+
+   <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="flutter_040_naver_api"
+        android:label="flutter_naver"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
