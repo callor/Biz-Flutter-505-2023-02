@@ -1,16 +1,15 @@
 # flutter_060_firebase_db
 
-A new Flutter project.
+## firebase DB 연동하기
 
-## Getting Started
+- `firebase.google.com` 에서 프로젝트 생성하고
+- 지시하는 대로 따라 하기
+- `google-service.json` 파일 `Andriod/app` 폴더에 복사 해 넣기
+- `root/build.gradle`, `app/build.gradle` 파일 설정하기
 
-This project is a starting point for a Flutter application.
+## dependencies 설정
 
-A few resources to get you started if this is your first Flutter project:
+- `flutter pub add firebase_core` : firebase 모든 기능에 대한 필수
+- `flutter pub add firebase_database` : realtimedatabase 를 사용하기 위한 설정
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- ~/AppData/Local/Pub/Cache/bin/flutterfire configure --project=flutter-demo-a7257
