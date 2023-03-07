@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "634564775821",
+    "project_id": "flutter-demo-a7257",
+    "storage_bucket": "flutter-demo-a7257.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634564775821:android:a02af0d675b34a74abf7c4",
+        "android_client_info": {
+          "package_name": "com.callor.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634564775821-shhvshf3h4v8g76h7pdo8gb0oo225c7d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDfXB0h143qrxBFXycD7QAU0q7DxjGbyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634564775821-shhvshf3h4v8g76h7pdo8gb0oo225c7d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
