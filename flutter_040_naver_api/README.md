@@ -50,3 +50,25 @@ flutter pub add flutter_html
         }
     }
 ```
+
+## 영화 리스트 검색 후 naver 영화 자세히 보기로 jump
+
+- 외부 URL 을 내장 브라우져로 열기
+- `flutter pub add url_launcher` 설치
+- `AndroidManifast.xml` 파일에 다음 항목 추가
+
+```xml
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
+    <!-- 여기 위에 설정 -->
+    <application
+```
+
+## Android 기기에서 외부 브라우저를 열거나 WebView 위젯으로 열때 오류 해결
+
+- `웹 페이지를 사용할수 없음`, `ERR CLEAR_TEXT_NOT_PERMIT` 오류
