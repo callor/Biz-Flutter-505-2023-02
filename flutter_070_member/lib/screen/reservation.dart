@@ -36,7 +36,9 @@ class _ReservationPageState extends State<ReservationPage> {
                           builder: (context) => const AddressPage(),
                         ),
                       );
+                      print(result.toString());
                       _addrInputController.text = result["postCode"];
+                      // setState(() {});
                     },
                     icon: const Icon(Icons.search)),
               ),

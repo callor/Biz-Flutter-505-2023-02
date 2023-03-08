@@ -17,7 +17,7 @@ class _AddressPagePageState extends State<AddressPage> {
   String kkLatitude = "";
   String kkLongtude = "";
 
-  Map<String, String>? resultData;
+  // Map<String, String>? resultData;
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +29,16 @@ class _AddressPagePageState extends State<AddressPage> {
       // kakaoKey: 카카오 개발자 key,
       useLocalServer: true,
       localPort: 1024,
-      callback: (result) {
-        resultData!.addAll({
+      callback: (result) async {
+        final Map<String, String> resultData = {
           'postCode': result.postCode,
           'address': result.address,
           'latitude': result.latitude.toString(),
           'longtude': result.longitude.toString(),
           'kkLatitude': result.kakaoLatitude.toString(),
           'kkLongtude': result.kakaoLongitude.toString(),
-        });
+        };
+        print("ResultData ${resultData.toString()}");
         Navigator.pop(context, resultData);
       },
     );
