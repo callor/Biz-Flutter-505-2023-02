@@ -5,8 +5,8 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "flutter_040_naver_api",
-      "cwd": "flutter_040_naver_api",
+      "name": "flutter_member",
+      "cwd": "flutter_070_member",
       "request": "launch",
       "type": "dart"
     }

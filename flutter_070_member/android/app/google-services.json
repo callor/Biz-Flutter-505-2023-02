@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "634564775821",
+    "firebase_url": "https://flutter-demo-a7257-default-rtdb.firebaseio.com",
+    "project_id": "flutter-demo-a7257",
+    "storage_bucket": "flutter-demo-a7257.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634564775821:android:a02af0d675b34a74abf7c4",
+        "android_client_info": {
+          "package_name": "com.callor.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634564775821-ft19a1jc9ma0jt02n8kbm1j8hokr2877.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.callor.firebase",
+            "certificate_hash": "1fc71c0cf022be82624c0f8ab5f30f7e5a327d39"
+          }
+        },
+        {
+          "client_id": "634564775821-9f9ntit8upvkrgt0qktmdc4pvjef1goc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDfXB0h143qrxBFXycD7QAU0q7DxjGbyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634564775821-9f9ntit8upvkrgt0qktmdc4pvjef1goc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "634564775821-bht744loj6l5bp9b4j1r48s1vj0vngjp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutter060FirebaseDb"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634564775821:android:7771d725ea014f64abf7c4",
+        "android_client_info": {
+          "package_name": "com.callor.member"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634564775821-e6a69lgvraejdehv52nt6374johgonfp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.callor.member",
+            "certificate_hash": "1fc71c0cf022be82624c0f8ab5f30f7e5a327d39"
+          }
+        },
+        {
+          "client_id": "634564775821-9f9ntit8upvkrgt0qktmdc4pvjef1goc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDfXB0h143qrxBFXycD7QAU0q7DxjGbyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634564775821-9f9ntit8upvkrgt0qktmdc4pvjef1goc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "634564775821-bht744loj6l5bp9b4j1r48s1vj0vngjp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutter060FirebaseDb"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
