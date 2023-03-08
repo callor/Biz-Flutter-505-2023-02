@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_member/screen/address.dart';
 import 'package:intl/intl.dart';
+import 'package:kpostal/kpostal.dart';
 
 class ReservationPage extends StatefulWidget {
   const ReservationPage({super.key});
@@ -32,9 +32,25 @@ class _ReservationPageState extends State<ReservationPage> {
                     onPressed: () async {
                       final result = await Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const AddressPage(),
-                        ),
+                        MaterialPageRoute(builder: (context) {
+                          return KpostalView(
+                            // kakaoKey: 카카오 개발자 key,
+                            useLocalServer: true,
+                            localPort: 1024,
+                            callback: (result) async {
+                              final Map<String, String> resultData = {
+                                'postCode': result.postCode,
+                                'address': result.address,
+                                'latitude': result.latitude.toString(),
+                                'longtude': result.longitude.toString(),
+                                'kkLatitude': result.kakaoLatitude.toString(),
+                                'kkLongtude': result.kakaoLongitude.toString(),
+                              };
+                              print("ResultData ${resultData.toString()}");
+                              Navigator.pop(context, resultData);
+                            },
+                          );
+                        }),
                       );
                       print(result.toString());
                       _addrInputController.text = result["postCode"];
