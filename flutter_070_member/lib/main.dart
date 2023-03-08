@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_member/screen/reservation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const App());
@@ -11,6 +13,16 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Member',
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          // if it's a RTL language
+        ],
+        supportedLocales: const [
+          Locale('ko', 'KR'),
+          // include country code too
+        ],
         theme: ThemeData(primarySwatch: Colors.blue),
         home: const HomePage());
   }
@@ -94,6 +106,16 @@ class _HomePageState extends State<HomePage> {
               await _googleSignIn.signOut();
             },
             child: const Text("로그아웃"),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ReservationPage(),
+                  ));
+            },
+            child: const Text("예약하기"),
           )
         ],
       );
