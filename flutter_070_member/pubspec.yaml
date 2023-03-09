@@ -46,6 +46,9 @@ dependencies:
   flutter_localization: ^0.1.10
   intl: ^0.17.0
   kpostal: ^0.5.1
+  firebase_core: ^2.7.1
+  firebase_auth: ^4.2.10
+  firebase_database: ^10.0.15
 
 dev_dependencies:
   flutter_test:
