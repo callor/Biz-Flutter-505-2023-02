@@ -72,12 +72,18 @@ class _ReservationPageState extends State<ReservationPage> {
                         firstDate: DateTime(1900),
                         lastDate: DateTime.now(),
                       );
+                      // flutter pub add intl
+                      // DateTimeFormat("yyyy-MM-dd")
+                      //      .format(변수);
                       _dateInputController.text =
-                          DateFormat('yyyy-MM-dd').format(DateTime(
-                        selectDate!.year.toInt(),
-                        selectDate.month.toInt(),
-                        selectDate.day.toInt(),
-                      ));
+                          DateFormat("yyyy-MM-dd").format(selectDate!);
+
+                      // _dateInputController.text =
+                      //     DateFormat('yyyy-MM-dd').format(DateTime(
+                      //   selectDate!.year.toInt(),
+                      //   selectDate.month.toInt(),
+                      //   selectDate.day.toInt(),
+                      // ));
                       setState(() {});
                     },
                     icon: const Icon(Icons.search)),
