@@ -32,9 +32,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 1500;
+  static const num = 100;
+  int _counter = 1500; // 기본이 null null 허용변수
   bool _timerRun = false;
-  late Timer _timer;
+  late Timer _timer; // null 이 안되는 변수, 단 값 저장(초기화)를 나중에
+
+  String formatTime(int seconds) {
+    return Duration(seconds: seconds).toString().split(".").first.substring(2);
+  }
 
   void _onPressed() {
     setState(() {
@@ -42,13 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
     });
     if (_timerRun) {
       _timer = Timer.periodic(
-        const Duration(seconds: 1),
-        (timer) {
-          setState(() {
-            _counter--;
-          });
-        },
-      );
+          const Duration(seconds: 1),
+          (timer) => setState(() {
+                _counter--;
+              }));
     } else {
       _timer.cancel();
     }
@@ -65,8 +67,11 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              formatTime(_counter),
+              style: const TextStyle(
+                  fontSize: 60,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.blue),
             ),
           ],
         ),
