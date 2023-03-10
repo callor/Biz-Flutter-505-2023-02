@@ -32,13 +32,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static const num = 100;
+  // static const num = 100;
   int _counter = 1500; // 기본이 null null 허용변수
   bool _timerRun = false;
   late Timer _timer; // null 이 안되는 변수, 단 값 저장(초기화)를 나중에
 
   String formatTime(int seconds) {
-    return Duration(seconds: seconds).toString().split(".").first.substring(2);
+    var duration = Duration(seconds: seconds);
+    // print(duration);
+    return duration.toString().split(".").first.substring(2);
   }
 
   void _onPressed() {
@@ -58,30 +60,59 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              formatTime(_counter),
-              style: const TextStyle(
-                  fontSize: 60,
-                  fontWeight: FontWeight.w900,
-                  color: Colors.blue),
-            ),
-          ],
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage("images/pomodors.jpg"),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _onPressed,
-        tooltip: 'Increment',
-        child:
-            _timerRun ? const Icon(Icons.pause) : const Icon(Icons.play_arrow),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                formatTime(_counter),
+                style: TextStyle(
+                  decorationColor: Colors.amber,
+                  fontSize: 80,
+                  fontWeight: FontWeight.w900,
+                  foreground: Paint()
+                    ..style = PaintingStyle.stroke
+                    ..strokeWidth = 3
+                    ..color = Colors.white,
+                ),
+              ),
+            ],
+          ),
+        ),
+        floatingActionButtonLocation:
+            FloatingActionButtonLocation.miniCenterFloat,
+        floatingActionButton: SizedBox(
+          width: 100,
+          height: 100,
+          child: FloatingActionButton(
+            backgroundColor: Colors.white38,
+            isExtended: true,
+            elevation: 5,
+            onPressed: _onPressed,
+            tooltip: 'Increment',
+            child: _timerRun
+                ? const Icon(
+                    Icons.pause,
+                    size: 60,
+                    color: Colors.black,
+                  )
+                : const Icon(
+                    Icons.play_arrow,
+                    size: 60,
+                    color: Colors.black,
+                  ),
+          ),
+        ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
