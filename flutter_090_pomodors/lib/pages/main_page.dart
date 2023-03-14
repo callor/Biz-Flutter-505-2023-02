@@ -8,8 +8,15 @@ class MainPage extends StatefulWidget {
    * main.dart 에서 전달된 counter state 변수는
    * widget 클래스에 담아서 state 로 전달한다
    */
-  const MainPage({super.key, required this.counter});
+  const MainPage({
+    super.key,
+    required this.counter,
+    required this.onPressed,
+    required this.timeRun,
+  });
   final int counter;
+  final Function() onPressed;
+  final bool timeRun;
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -35,40 +42,67 @@ class _MainPageState extends State<MainPage> {
     } else {
       return times.first.substring(2);
     }
-
     // return "0:00";
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Text(
-          _formatTime(widget.counter),
-          style: TextStyle(
-              fontSize: 90,
-              fontWeight: FontWeight.w900,
-              // color: Colors.black,
-              /**
-             * var Paint pant = Paint()
-             * paint.style(...)
-             * paint.strokeWidth(3)
-             * paint.color(Colors.amber)
-             */
-              foreground: Paint()
-                ..style = PaintingStyle.stroke
-                ..strokeWidth = 3
-                ..color = Colors.blueAccent),
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Stack(
+              children: [
+                Text(
+                  _formatTime(widget.counter),
+                  style: TextStyle(
+                      fontSize: 90,
+                      fontWeight: FontWeight.w900,
+                      // color: Colors.black,
+                      /**
+                     * var Paint pant = Paint()
+                     * paint.style(...)
+                     * paint.strokeWidth(3)
+                     * paint.color(Colors.amber)
+                     */
+                      foreground: Paint()
+                        ..style = PaintingStyle.stroke
+                        ..strokeWidth = 3
+                        ..color = Colors.blueAccent),
+                ),
+                Text(
+                  _formatTime(widget.counter),
+                  style: const TextStyle(
+                    fontSize: 90,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.amber,
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
-        Text(
-          _formatTime(widget.counter),
-          style: const TextStyle(
-            fontSize: 90,
-            fontWeight: FontWeight.w900,
-            color: Colors.amber,
+      ),
+
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterFloat,
+      floatingActionButton: SizedBox(
+        width: 100,
+        height: 100,
+        child: FloatingActionButton(
+          backgroundColor: Colors.white38,
+          elevation: 5,
+          onPressed: widget.onPressed,
+          tooltip: 'Start',
+          child: Icon(
+            (widget.timeRun ? Icons.pause : Icons.play_arrow),
+            size: 50,
+            color: Colors.black,
           ),
         ),
-      ],
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
