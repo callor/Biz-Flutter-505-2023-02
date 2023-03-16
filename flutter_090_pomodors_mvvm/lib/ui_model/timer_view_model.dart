@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../models/timerr_dto.dart';
+import '../models/timer_dto.dart';
 
 class TimerViewModel with ChangeNotifier {
   static const setCounter = 5;
