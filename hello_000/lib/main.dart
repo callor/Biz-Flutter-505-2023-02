@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -48,27 +50,43 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // 여기에 선언된 변수는 state
+  // 여기에서 선언된 변수를 사용하여 화면에 값을 표현하는 곳이 있고
+  // 여기 선언된 변수값을 어디선가 변경하고
+  // setState()를 호출하면 화면이 다시 그려진다
   int _counter = 0;
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }
 
   @override
+  void initState() {
+    super.initState();
+    print("initState");
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print("didChange");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print("dispose");
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    // 계속해서 호출되어야 하는 함수, 코드 등을 작성하는 곳
+    // 여기에서 선언된 변수는 return 문 내애서 사용한다
+    // 여기에 선언된 변수는 state 가 아니다
+    var num = 0;
+    print("Build");
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
